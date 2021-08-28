@@ -2,7 +2,6 @@ import React from "react";
 import GifItem from "./GifItem";
 
 const GifList = (props) => {
-  console.log("gifListProps", props);
   const gifItems = props.gifs.map((image) => {
     return (
       <GifItem

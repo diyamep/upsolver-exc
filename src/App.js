@@ -29,13 +29,15 @@ function App() {
 
   const handleTermChange = async (term) => {
     if (term) {
-      const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(
+      const url = `https://api.giphy.com/v1/gifs/search?q=${term.replace(
         /\s/g,
         "+"
       )}&api_key=54YWDzpnKwpreX21oW4jevboPLRjbRF5`;
 
       const gifs = await axios.get(url);
-      setGifs(gifs);
+      if (gifs.data) {
+        setGifs(gifs.data.data);
+      }
     }
   };
 
