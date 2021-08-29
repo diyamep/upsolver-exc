@@ -29,10 +29,18 @@ function App() {
 
   const handleTermChange = async (term) => {
     if (term) {
+      let limit = 50;
+      if (window.innerWidth < 400) {
+        limit = 10;
+      } else if (window.innerWidth < 700) {
+        limit = 15;
+      } else if (window.innerWidth < 900) {
+        limit = 20;
+      }
       const url = `https://api.giphy.com/v1/gifs/search?q=${term.replace(
         /\s/g,
         "+"
-      )}&api_key=54YWDzpnKwpreX21oW4jevboPLRjbRF5`;
+      )}&api_key=54YWDzpnKwpreX21oW4jevboPLRjbRF5&limit=${limit}`;
 
       const gifs = await axios.get(url);
       if (gifs.data) {
